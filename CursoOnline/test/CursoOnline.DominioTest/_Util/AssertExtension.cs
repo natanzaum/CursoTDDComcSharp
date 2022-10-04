@@ -7,7 +7,7 @@ using Xunit;
 
 namespace CursoOnline.DominioTest._Util
 {
-    //Metodos de extensãod evem ser sempre estaticos!
+    //Metodos de extensão devem ser sempre estaticos, a classe e o metodo!
     public static class AssertExtension
     {
         public static void ComMensagem(this ArgumentException exception, string mensagem)
