@@ -1,4 +1,6 @@
-﻿using CursoOnline.DominioTest._Builders;
+﻿using Bogus;
+using CursoOnline.Dominio.Cursos;
+using CursoOnline.DominioTest._Builders;
 using CursoOnline.DominioTest._Util;
 using ExpectedObjects;
 using Microsoft.VisualStudio.TestPlatform.Common.Telemetry;
@@ -27,11 +29,13 @@ namespace CursoOnline.DominioTest.Cursos
             _output = output;
             _output.WriteLine("Construtor iniciado!!!");
 
-            _nome = "Informática básica"; 
-            _cargaHoraria = 50.0;
+            var faker = new Faker();
+
+            _nome = faker.Random.Word(); 
+            _cargaHoraria = faker.Random.Double(20, 100);
             _publicoAlvo = PublicoAlvo.Estudante;
-            _valor = 985.32;
-            _descricao = "Uma descrição qualquer";
+            _valor = faker.Random.Double(200, 9999);
+            _descricao = faker.Lorem.Paragraph();
         }
 
         [Fact]
@@ -89,43 +93,4 @@ namespace CursoOnline.DominioTest.Cursos
             _output.WriteLine("Dispose iniciado!!!");
         }
     }
-
-    public enum PublicoAlvo
-    {
-        Estudante,
-        Universitario,
-        Empregado,
-        Empregador
-    }
-
-    public class Curso
-    {
-        public Curso(string nome, string descricao, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
-        {
-            if (string.IsNullOrEmpty(nome))
-                throw new ArgumentException("Nome inválido");
-
-            if (cargaHoraria < 1)
-                throw new ArgumentException("Carga horaria inválida");
-
-            if (valor < 1)
-                throw new ArgumentException("Valor inválido");
-
-            Nome = nome;
-            CargaHoraria = cargaHoraria;
-            PublicoAlvo = publicoAlvo;
-            Valor = valor;  
-            Descricao = descricao;
-        }
-
-        public string Nome { get; set; }
-        public double CargaHoraria { get; set; }
-        public PublicoAlvo PublicoAlvo { get; set; }
-        public double Valor { get; set; }
-
-        public string Descricao { get; set; }
-
-
-
-}
 }
