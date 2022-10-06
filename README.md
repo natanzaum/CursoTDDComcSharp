@@ -36,6 +36,15 @@ Aplicação para administrar curso online
 * Entidade: Tudo aquilo que é identificavel   
 * Objeto de valor: Não tem identificador, mas faz parte de uma entidade  
 * Por onde começar o teste: Pelos domínios  
+  
+### **Mock**  
+* Cria um comportamento equivalente ao código de produção  
+* Usado para verificar algo  
+* Usa a biblioteca Moq  
+  
+### **Stub**  
+* Quando não verifica nada do mock, mas da comportamentos para ele simular algo  
+* Quando usa o setup para dar comportamentos  
 
 
 
